@@ -23,11 +23,12 @@ else
 endif
 
 function! ctrlp#git_branches#init()
-  return split(s:system('git branches'), "\n")
+  return map(split(s:system('git branch'), "\n"), 'v:val[2:]')
 endfunc
 
 function! ctrlp#git_branches#accept(mode, str)
-  call s:system('git checkout '.shellescape(a:str))
+  call ctrlp#exit()
+  echo s:system('git checkout '.shellescape(a:str))
 endfunc
 
 let s:id = g:ctrlp_builtins + len(g:ctrlp_ext_vars)
