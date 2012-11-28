@@ -11,8 +11,9 @@ let s:git_var = {
 \  'accept': 'ctrlp#acceptfile',
 \  'lname':  'git',
 \  'sname':  'git',
-\  'type':   'file',
-\  'sort':   0,
+\  'type':   'path',
+\  'nolim':  1,
+\  'opmul':  1,
 \}
 
 if exists('g:ctrlp_ext_vars') && !empty(g:ctrlp_ext_vars)
