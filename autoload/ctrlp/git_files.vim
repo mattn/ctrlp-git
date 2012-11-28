@@ -23,7 +23,7 @@ else
 endif
 
 function! ctrlp#git_files#init()
-  return split(s:system('git ls-files'), "\n")
+  return split(s:system('git ls-files '.get(g:, 'ctrlp#git_files#option', '')), "\n")
 endfunc
 
 let s:id = g:ctrlp_builtins + len(g:ctrlp_ext_vars)
