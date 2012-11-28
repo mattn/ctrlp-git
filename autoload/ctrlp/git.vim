@@ -3,6 +3,8 @@ if exists('g:loaded_ctrlp_git') && g:loaded_ctrlp_git
 endif
 let g:loaded_ctrlp_git = 1
 
+let s:system = function(get(g:, 'ctrlp#git#system_function', 'system'))
+
 let s:git_var = {
 \  'init':   'ctrlp#git#init()',
 \  'exit':   'ctrlp#exit()',
@@ -20,7 +22,7 @@ else
 endif
 
 function! ctrlp#git#init()
-  return split(system('git ls-files'), "\n")
+  return split(s:system('git ls-files'), "\n")
 endfunc
 
 let s:id = g:ctrlp_builtins + len(g:ctrlp_ext_vars)
