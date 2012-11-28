@@ -1,38 +1,38 @@
-if exists('g:loaded_ctrlp_git_branches') && g:loaded_ctrlp_git_branches
+if exists('g:loaded_ctrlp_git_branch') && g:loaded_ctrlp_git_branch
   finish
 endif
-let g:loaded_ctrlp_git_branches = 1
+let g:loaded_ctrlp_git_branch = 1
 
 let s:system = function(get(g:, 'ctrlp#git#system_function', 'system'))
 
-let s:git_branches_var = {
-\  'init':   'ctrlp#git_branches#init()',
+let s:git_branch_var = {
+\  'init':   'ctrlp#git_branch#init()',
 \  'exit':   'ctrlp#exit()',
-\  'accept': 'ctrlp#git_branches#accept',
-\  'lname':  'git_branches',
-\  'sname':  'git_branches',
+\  'accept': 'ctrlp#git_branch#accept',
+\  'lname':  'git_branch',
+\  'sname':  'git_branch',
 \  'type':   'path',
 \  'nolim':  1,
 \  'opmul':  1,
 \}
 
 if exists('g:ctrlp_ext_vars') && !empty(g:ctrlp_ext_vars)
-  let g:ctrlp_ext_vars = add(g:ctrlp_ext_vars, s:git_branches_var)
+  let g:ctrlp_ext_vars = add(g:ctrlp_ext_vars, s:git_branch_var)
 else
-  let g:ctrlp_ext_vars = [s:git_branches_var]
+  let g:ctrlp_ext_vars = [s:git_branch_var]
 endif
 
-function! ctrlp#git_branches#init()
+function! ctrlp#git_branch#init()
   return map(split(s:system('git branch'), "\n"), 'v:val[2:]')
 endfunc
 
-function! ctrlp#git_branches#accept(mode, str)
+function! ctrlp#git_branch#accept(mode, str)
   call ctrlp#exit()
   echo s:system('git checkout '.shellescape(a:str))
 endfunc
 
 let s:id = g:ctrlp_builtins + len(g:ctrlp_ext_vars)
-function! ctrlp#git_branches#id()
+function! ctrlp#git_branch#id()
   return s:id
 endfunction
 
