@@ -7,7 +7,6 @@ let s:system = function(get(g:, 'ctrlp#git#system_function', 'system'))
 
 let s:git_branch_var = {
 \  'init':   'ctrlp#git_branch#init()',
-\  'exit':   'ctrlp#exit()',
 \  'accept': 'ctrlp#git_branch#accept',
 \  'lname':  'git_branch',
 \  'sname':  'git_branch',

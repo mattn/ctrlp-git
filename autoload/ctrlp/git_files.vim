@@ -7,7 +7,6 @@ let s:system = function(get(g:, 'ctrlp#git#system_function', 'system'))
 
 let s:git_files_var = {
 \  'init':   'ctrlp#git_files#init()',
-\  'exit':   'ctrlp#exit()',
 \  'accept': 'ctrlp#acceptfile',
 \  'lname':  'git_files',
 \  'sname':  'git_files',
